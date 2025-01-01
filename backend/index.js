@@ -15,7 +15,11 @@ dotenv.config()
 //ORDER OF USING THIS MIDDLEWARE MATTERS !!!!!
 app.use(cookieParser())
 app.use(express.json()) //to extract the given fields from req.body i.e parse incoming reqs with json payloads
+<<<<<<< HEAD
 
+=======
+// app.use(checkCookieandUser("token"))
+>>>>>>> a64f282d048168f62bf354deb61749e5f5c08079
 app.use("/api/auth",authRoute)
 app.use("/api/messages",messageRoute)
 
