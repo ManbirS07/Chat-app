@@ -2,31 +2,30 @@ import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 const protectRoute = async (req, res, next) => {
 	try {
+		//cookie-parser is used here to access the cookie
 		const token = req.cookies.jwt;
 
 		if (!token) {
 			return res.status(401).json({ error: "Unauthorized - No Token Provided" });
 		}
 
-<<<<<<< HEAD
 		const decoded = jwt.verify(token, process.env.SECRET_KEY);//verifying the token's signature
-=======
-		const decoded = jwt.verify(token, process.env.SECRET_KEY);
->>>>>>> a64f282d048168f62bf354deb61749e5f5c08079
 
-		if (!decoded) {
+		if (!decoded) 
+		{
 			return res.status(401).json({ error: "Unauthorized - Invalid Token" });
 		}
+		//we get the userId back from the token as it was the payload while creating the token
+		const user = await User.findById(decoded.userId).select("-password");//selecting all fields except password
 
-		const user = await User.findById(decoded.userId).select("-password");
-
-		if (!user) {
+		if (!user) 
+		{
 			return res.status(404).json({ error: "User not found" });
 		}
 
-		req.user = user;
+		req.user = user;//currently authenticated user
 
-		next();
+		next();//this calls the next funxtion in the middleware stack,i.e sendMessage in this case
 	} 
     catch (error) {
 		console.log("Error in protectRoute middleware: ", error.message);
