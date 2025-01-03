@@ -69,7 +69,7 @@ export const login=async(req,res)=>
         res.status(400).json({error:"Invalid Credentials or password"})
         }
 
-        const token=generateTokenAndSetCookie(user._id,res)
+        const token=generateTokenAndSetCookie(user?._id,res)
 
         res.status(200).json({
             id:user._id,
