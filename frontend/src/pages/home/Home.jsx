@@ -1,5 +1,4 @@
 import React from 'react'
-import Signup from '../signup/Signup'
 import Sidebar from '../../components/sidebar/sidebar'
 import MessageContainer from '../../components/messages/MessageContainer'
 
