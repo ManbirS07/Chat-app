@@ -1,5 +1,6 @@
 import express from "express" //creating a server using express
 import dotenv from "dotenv"
+import cors from "cors"
 
 import authRoute from "./routes/authRoute.js"
 import messageRoute from "./routes/messageRoute.js"
@@ -9,9 +10,10 @@ import { conntoMONGO_DB } from "./db/conn.js"
 import cookieParser from "cookie-parser"
 
 const app=express()
-const PORT=8000 || process.env.PORT;
+const PORT=8000 
 
 dotenv.config()
+app.use(cors())
 
 //ORDER OF USING THIS MIDDLEWARE MATTERS !!!!!
 app.use(cookieParser())
