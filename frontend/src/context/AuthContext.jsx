@@ -11,7 +11,7 @@ export const useAuthContext=()=>
 
 export const AuthContextProvider=({children})=>
 {
-    //From the local storage,we will get the data in string format so we parse it to convert to 
+    //From the local storage,we will get the data in string format so we parse it to convert it to JSON format
     const [AuthUser,setAuthUser]=useState(JSON.parse(localStorage.getItem("new-user"))||null)
     return (
         //we will wrap the children with the AuthContext provider so that
