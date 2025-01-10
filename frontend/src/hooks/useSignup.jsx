@@ -28,8 +28,9 @@ const useSignup = () =>
             //setting the user to local storage so that the user remains logged in even after refreshing the page
             localStorage.setItem("new-user",JSON.stringify(data))
 
-            //creating a context so that whenever user logs in, we can access the user data from anywhere in the app
-            //and redirect the user to the home page
+            
+            //Json.stringify because we can only store strings in local storage
+
             
             //setting the user data to the context which we added above in the local storage
             setAuthUser(data)
