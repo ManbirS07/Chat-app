@@ -13,7 +13,12 @@ const app=express()
 const PORT=8000 
 
 dotenv.config()
-app.use(cors())
+app.use(cors(
+    {
+        origin:"http://localhost:5173",
+        credentials:true
+    }
+))
 
 //ORDER OF USING THIS MIDDLEWARE MATTERS !!!!!
 app.use(cookieParser())
