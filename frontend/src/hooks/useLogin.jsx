@@ -1,4 +1,4 @@
-import React from 'react'
+
 import toast from 'react-hot-toast'
 import {useAuthContext} from '../context/AuthContext'
 import {useState} from 'react'
@@ -14,13 +14,15 @@ export const useLogin = () => {
             const res=await fetch("http://localhost:8000/api/auth/login",{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
-                body:JSON.stringify({username,password}) //sending the data in json format
+                body:JSON.stringify({username,password}), //sending the data in json format
+                credentials:'include' //to send the cookies along with the request
             })
             const data=await res.json() //getting the response in json format
 
             if(data.error)
             {
                 toast.error(data.error)
+                console.log(data.error)
             }
             //incase of successful login, we will get the name,username,email,profilePicUrl of the user
             //if the user is valid and exists in the database, we will set the user data to the local storage

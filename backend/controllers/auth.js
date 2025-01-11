@@ -68,12 +68,13 @@ export const login=async(req,res)=>
 
         if(!user || !comparePassword) 
         {
-        res.status(400).json({error:"Invalid Credentials or password"})
+        return res.status(400).json({error:"Invalid Credentials or password"})
         }
 
-        const token=generateTokenAndSetCookie(user?._id,res)
+        const token=generateTokenAndSetCookie(user._id,res)
+        
 
-        res.status(200).json({
+       return res.status(200).json({
             id:user._id,
             name:user.name,
             username:user.username,
@@ -83,7 +84,7 @@ export const login=async(req,res)=>
         
     } catch (error) {
         console.log("Error in login controller",error.message)
-        res.status(500).json({error:"Server error"})
+        return res.status(500).json({error:"Server error"})
     }
     
 }
