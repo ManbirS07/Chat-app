@@ -1,7 +1,7 @@
 import GenderCheckbox from "./gender"
 import { useState } from "react"
-import useSignup from "c:/Users/jaspa/OneDrive/Desktop/chat_app/Chat-app/frontend/src/hooks/useSignup"
-import { redirect } from "react-router-dom"
+import useSignup from "c:/Users/jaspa/OneDrive/Desktop/chat/Chat-app/frontend/src/hooks/useSignup"
+
 
 
 const Signup = () => {

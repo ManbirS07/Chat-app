@@ -7,7 +7,6 @@ import { getRandomEmoji } from '../../utils/emoji';
 
 const Conversations = () => {
 	const{loading,users}=useGetUsers();
-	console.log(users)
 	//users is an array of objects so we map through each user to get convo of the logged in user
 
 
