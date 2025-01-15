@@ -22,16 +22,15 @@ export const useLogin = () => {
             if(data.error)
             {
                 toast.error(data.error)
-                console.log(data.error)
             }
             //incase of successful login, we will get the name,username,email,profilePicUrl of the user
             //if the user is valid and exists in the database, we will set the user data to the local storage
             else
             {
+                console.log(data)
                 localStorage.setItem("new-user",JSON.stringify(data))
                 setAuthUser(data)
                 toast.success('Login successful')
-                console.log(data)
         }
         } catch (error) 
         {

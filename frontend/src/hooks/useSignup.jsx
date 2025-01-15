@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import toast from 'react-hot-toast'
-import { useAuthContext } from '../context/AuthContext'
+import { useAuthContext } from 'C:\\Users\\jaspa\\OneDrive\\Desktop\\Chat\\Chat-app\\frontend\\src\\context\\AuthContext.jsx'
 
 //custom hook to handle the signup functionality
 const useSignup = () => 

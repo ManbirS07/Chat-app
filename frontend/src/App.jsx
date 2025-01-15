@@ -4,7 +4,7 @@ import Home from './pages/home/Home'
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
 import {  Navigate, Route, Routes } from 'react-router-dom'
-import { useAuthContext } from './context/AuthContext'
+import { useAuthContext } from 'C:\\Users\\jaspa\\OneDrive\\Desktop\\Chat\\Chat-app\\frontend\\src\\context\\AuthContext.jsx'
 import { useNavigate} from 'react-router-dom'
 import { useEffect } from 'react'
 

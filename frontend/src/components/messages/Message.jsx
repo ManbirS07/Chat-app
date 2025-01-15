@@ -1,15 +1,29 @@
 import React from 'react'
+import useConvo from '../../zustand/useConvo';
+import { useAuthContext } from '../../context/AuthContext';
+import { extractTime } from '../../utils/extractTime';
 
-const Message = () => {
-  return (
-    <div className="chat chat-start">
+const Message = ({message}) => {
+	const { AuthUser } = useAuthContext();
+	const { selectedconversation,setMessages} = useConvo();
+	
+	const fromMe = message.senderId === AuthUser.id;
+	console.log(message.senderId)
+	const formattedTime = extractTime(message.createdAt);
+	const chatClassName = fromMe ? "chat-end" : "chat-start";
+	const profilePic = fromMe ? AuthUser.profilePicUrl : selectedconversation.profilePicUrl;
+	const bubbleBgColor = fromMe ? "bg-blue-500" : "";
+	
+	
+ return (
+    <div className={`chat ${chatClassName}`}>
 			<div className='chat-image avatar'>
 				<div className='w-10 rounded-full'>
-					<img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'/>
+					<img src={profilePic}/>
 				</div>
 			</div>
-			<div className={`chat-bubble text-white pb-2`}>abc</div>
-			<div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>time</div>
+			<div className={`chat-bubble text-white bg-blue-500 ${bubbleBgColor}`}>{message.message}</div>
+			<div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formattedTime}</div>
 		</div>
   )
 }
