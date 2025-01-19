@@ -8,7 +8,7 @@ const generateTokenAndSetCookie = (userId, res) => {
 	});//userid is the payload here
 
 	res.cookie('jwt', token, {//in the response,setting the cookie name as jwt
-		maxAge: 36000000, // Milisecond
+		maxAge: 3600000, // Milisecond
 		httpOnly: true, // prevent XSS attacks cross-site scripting attacks
 		sameSite: "strict", // CSRF attacks cross-site request forgery attacks
 		secure: process.env.NODE_ENV !== "development",

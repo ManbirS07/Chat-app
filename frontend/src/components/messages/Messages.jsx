@@ -4,10 +4,11 @@ import MessageSkeleton from "../skeletons/MessageSkeleton";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useAuthContext } from "../../context/AuthContext";
+import useListenlivemsgs from "../../hooks/useListenlivemsgs";
 
 const Messages = () => {
 	const { messages, loading } = useGetMessages();
-	console.log(messages)
+	useListenlivemsgs()
 	//If we are somewhere above in the chat and we sent a message,the scrollbar should automatically 
 	//take us to the latest msg -> with the help of useeffect
 

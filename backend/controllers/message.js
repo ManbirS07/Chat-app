@@ -1,13 +1,14 @@
 import Message from "../models/message.js"
 import Conversation from "../models/conversation.js"
 import User from "../models/user.js"
+import { getreceiverId,  io } from "../sockets/socket.js"
 
 export const sendMessage=async(req,res)=>
 {
   //since we successfully passed from the protectRoute middleware,we have access to req.user which has the current user
   try {
     const {message}=req.body
-    ///send/:id is the receiver's id
+    ///send/:id is the receiver's id when we post a msg
     const receiverId=req.params.id
     const receiverName=await User.findById(receiverId)
     
@@ -52,7 +53,13 @@ export const sendMessage=async(req,res)=>
         }
 
         //Socket.io functionality here
-
+        //get the receiver socket id and if the user is online,send him the new message
+        const receiverSocketId=getreceiverId(receiverId)
+          //if user is online
+          if(receiverSocketId)
+          {
+            io.to(receiverSocketId).emit("New Message",newMessage)
+          }
         res.status(201).json({newMessage,convo})
       
   } catch (error) {
