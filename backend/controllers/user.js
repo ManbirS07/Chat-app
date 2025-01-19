@@ -15,3 +15,5 @@ return res.status(200).json({filteredUsers})
         res.status(500).json({error:"Server error"})
     }
 }
+
+

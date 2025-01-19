@@ -20,7 +20,11 @@ export const useLogout = () => {
             else
             {
                 //remove user from local storage and set the Authuser state to null
-                localStorage.removeItem("new-user")
+                const time=1000*60*60
+                setTimeout(() => {
+                    localStorage.removeItem("new-user")
+                }, time);
+               
                 setAuthUser(null)
                 toast.success(data.message)
             }

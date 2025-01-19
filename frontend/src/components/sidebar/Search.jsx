@@ -4,17 +4,19 @@ import { IoSearchSharp } from "react-icons/io5";
 import useConvo from '../../zustand/useConvo';
 import useGetUsers from '../../hooks/useGetUsers';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const Search = () => {
 	const [search,setSearch]=useState("")
 	const {setselectedConvo}=useConvo();
 	const {users}=useGetUsers()
-
+	console.log(users)
 	const handleSubmit=(e)=>
 	{
 		e.preventDefault();
 		if (!search) return;
-		const conversation = users.find((convo) => convo.Name.toLowerCase().includes(search.toLowerCase()));
+		const conversation = users.find((convo) => convo.name.toLowerCase().includes(search.toLowerCase()));
+		console.log(conversation)
 
 		if (conversation) 
 		{

@@ -30,8 +30,11 @@ export const signup=async(req,res)=>
 
 
         //The below urls will generate diff profile pic of boys and girls acc to username
-        const boyprofilePic=`https://avatar.iran.liara.run/public/boy?username=${username}`
-        const girlprofilePic=`https://avatar.iran.liara.run/public/girl?username=${username}`
+        const getprofile=async(req,res)=>
+        {
+        const boyprofilePic=await fetch(`https://avatar.iran.liara.run/public/boy?username=${username}`)
+        const girlprofilePic=await fetch(`https://avatar.iran.liara.run/public/girl?username=${username}`)
+        }
 
         //adding new user to the db
         const newUser=await User.create({

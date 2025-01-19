@@ -27,8 +27,12 @@ export const useLogin = () => {
             //if the user is valid and exists in the database, we will set the user data to the local storage
             else
             {
-                console.log(data)
-                localStorage.setItem("new-user",JSON.stringify(data))
+                
+                localStorage.setItem("new-user",JSON.stringify(
+                    {
+                        time:new Date(),
+                        data
+            }))
                 setAuthUser(data)
                 toast.success('Login successful')
         }

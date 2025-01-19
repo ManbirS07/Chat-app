@@ -1,8 +1,12 @@
+import { useSocketContext } from "../../context/socketContext";
 import useConvo from "../../zustand/useConvo";
 const Conversation = ({user,emoji,lastidx}) => 
 {
 	const {selectedconversation,setselectedConvo}=useConvo()
 	const defaultProfilePic = 'https://cdn0.iconfinder.com/data/icons/communication-line-10/24/account_profile_user_contact_person_avatar_placeholder-512.png';
+	const {onlineUsers}=useSocketContext()
+	// //a user of online if the only users object contains the current user's id
+	const isOnline=onlineUsers.includes(user._id)
 	//checking if the id of the user matches the selected conversation
 	const isSelected=selectedconversation?._id===user._id
 	    	return (
@@ -11,7 +15,7 @@ const Conversation = ({user,emoji,lastidx}) =>
 				${isSelected?"bg-cyan-400":""}`}
 				onClick={()=>setselectedConvo(user)}
 				>
-    				<div className='avatar online'>
+    				<div className={`avatar ${isOnline?"online":""}`}>
     					<div className='w-12 rounded-full'>
     						<img
     							src={user.profilePicUrl || defaultProfilePic}
@@ -32,4 +36,5 @@ const Conversation = ({user,emoji,lastidx}) =>
     		</>
     	);
     };
+
     export default Conversation;
