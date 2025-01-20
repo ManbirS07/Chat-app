@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import toast from 'react-hot-toast'
-import { useAuthContext } from 'C:\\Users\\jaspa\\OneDrive\\Desktop\\Chat\\Chat-app\\frontend\\src\\context\\AuthContext.jsx'
+import { useAuthContext } from '../context/AuthContext'
 
 //custom hook to handle the signup functionality
 const useSignup = () => 
@@ -30,8 +30,6 @@ const useSignup = () =>
 
             
             //Json.stringify because we can only store strings in local storage
-
-            
             //setting the user data to the context which we added above in the local storage
             setAuthUser(data)
 

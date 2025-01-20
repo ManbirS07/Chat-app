@@ -11,6 +11,7 @@ export const useLogout = () => {
                 {
                     method:"POST",
                     headers:{"Content-Type":"application/json"},
+                    credentials: 'include',
                 })
             const data=await res.json()
             if(data.error)
@@ -20,12 +21,8 @@ export const useLogout = () => {
             else
             {
                 //remove user from local storage and set the Authuser state to null
-                const time=1000*60*60
-                setTimeout(() => {
-                    localStorage.removeItem("new-user")
-                }, time);
-               
                 setAuthUser(null)
+                localStorage.removeItem("new-user")
                 toast.success(data.message)
             }
         } catch (error) {

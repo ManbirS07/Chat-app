@@ -6,12 +6,13 @@ import { extractTime } from '../../utils/extractTime';
 const Message = ({message}) => {
 	const { AuthUser } = useAuthContext();
 	const { selectedconversation,setMessages} = useConvo();
-	
+	console.log(AuthUser.id)
+	console.log(message.senderId)
 	const fromMe = message.senderId === AuthUser.id;
 	const formattedTime = extractTime(message.createdAt);
 	const chatClassName = fromMe ? "chat-end" : "chat-start";
 	const profilePic = fromMe ? AuthUser.profilePicUrl : selectedconversation.profilePicUrl;
-	const bubbleBgColor = fromMe ? "bg-blue-500" : "bg-black";
+	const bubbleBgColor = fromMe ? "bg-blue-500" :"bg-red-300";
 	
 	
  return (
