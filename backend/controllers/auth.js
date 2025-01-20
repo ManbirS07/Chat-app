@@ -30,11 +30,10 @@ export const signup=async(req,res)=>
 
 
         //The below urls will generate diff profile pic of boys and girls acc to username
-        const getprofile=async(req,res)=>
-        {
+       
         const boyprofilePic=await fetch(`https://avatar.iran.liara.run/public/boy?username=${username}`)
         const girlprofilePic=await fetch(`https://avatar.iran.liara.run/public/girl?username=${username}`)
-        }
+        
 
         //adding new user to the db
         const newUser=await User.create({
@@ -95,7 +94,7 @@ export const login=async(req,res)=>
 export const logout=(req,res)=>
 {
    try {
-     res.clearCookie("token")
+     res.clearCookie("jwt")
      res.status(200).json({message:"Logged out successfully!!"})
    } 
    catch (error) {
